@@ -12,7 +12,7 @@ res="<html>
     Holberton School
   </body>
 </html>"
-echo $res | sudo tee /data/web_static/releases/test/index.html > /dev/null
+echo "$res" | sudo tee /data/web_static/releases/test/index.html > /dev/null
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bkp
@@ -35,7 +35,7 @@ echo "server {
 	location / {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
+		try_files \$uri \$uri/ =404;
 	}
 
 }" | tee /etc/nginx/sites-available/default > /dev/null
