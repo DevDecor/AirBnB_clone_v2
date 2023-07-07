@@ -41,3 +41,4 @@ echo "server {
 }" | tee /etc/nginx/sites-available/default > /dev/null
 
 service nginx restart
+exit 0
