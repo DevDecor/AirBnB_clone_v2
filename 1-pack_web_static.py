@@ -2,6 +2,7 @@
 """Deployment scripts"""
 from fabric.api import local
 from datetime import datetime
+import os
 
 
 def do_pack():
@@ -9,10 +10,10 @@ def do_pack():
     now = datetime.now()
     timestamp = now.strftime("%Y%m%d%H%M%S")
     archive_path = "versions/web_static_{}.tgz".format(timestamp)
+    if not os.path.exists("versions"):
+        os.makedirs("versions")
 
-    local("mkdir -p versions")
-
-    result = local("tar -czvf {} web_static".format(archive_path))
+    result = local("tar -cvzf {} web_static".format(archive_path))
     if result.failed:
         return None
 
