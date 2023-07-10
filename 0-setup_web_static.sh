@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Deploy AirBNB static files
 
+#!/usr/bin/env bash
+# Script that setup a nginx web server on our server + redirection + 404.
 
 apt update -y && apt upgrade -y
 apt install nginx -y
@@ -50,7 +52,7 @@ server {
 	server_name _;
 
     location /hbnb_static {
-        alias /data/web_static/releases/test/;
+        alias /data/web_static/current/;
         index index.html;
     }
 
